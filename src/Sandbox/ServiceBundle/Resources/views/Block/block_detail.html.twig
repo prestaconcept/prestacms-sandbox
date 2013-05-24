@@ -1,0 +1,30 @@
+{#
+/**
+ * This file is part of the Presta CMS Sandbox project.
+ *
+ * (c) PrestaConcept <http://www.prestaconcept.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+#}
+{% extends 'PrestaCMSCoreBundle:Block:base_block.html.twig' %}
+
+{% block block %}
+
+    {% if service %}
+    <h1>{{ service.title }}</h1>
+
+    {% media service.image, 'page_content' %}
+
+    <div class="service well well-large">
+        {{ service.description | raw }}
+    </div>
+    {% else %}
+    <h1>{{ 'service.detail.notfound.title' | trans }}</h1>
+
+    <div class="service well well-large">
+        {{ 'service.detail.notfound.body' | trans }}
+    </div>
+    {% endif %}
+{% endblock %}

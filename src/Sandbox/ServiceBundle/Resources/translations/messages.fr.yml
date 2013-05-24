@@ -1,0 +1,9 @@
+service:
+    list:
+        detail.link.label: Détails
+    detail:
+        notfound:
+            title: Service introuvable
+            body: |
+              Cette page peut contenir un service dynamique qui est géré par un CRUD Sonata standard.
+              Vous pouvez lister ces services depuis le lien du fil d'arianne.

@@ -176,6 +176,43 @@ pages:
             presta-sitemap:
                 name: 'presta-sitemap'
                 template: 'left-sidebar'
+                
+    services:
+        name: 'services'
+        url:
+            en: 'services'
+            fr: 'services'
+        template: 'default'
+        meta:
+            title:
+                en: "services"
+                fr: "services"
+        zones:
+            content:
+                10:
+                    name: main
+                    type: presta_cms.block.simple
+                    is_editable: true
+                20:
+                    name: service-list
+                    type: sandbox.block.service.list
+                    is_editable: true
+        children:
+            detail:
+                name: detail
+                url-pattern: /{url}
+                url-default:
+                    url: default
+                meta:
+                    title:
+                        en: "Service details"
+                        fr: "Détails d'un service"
+                zones:
+                    content:
+                        10:
+                            name: service-detail
+                            type: sandbox.block.service.detail
+                            is_editable: false
 
     about:
         name: 'about'

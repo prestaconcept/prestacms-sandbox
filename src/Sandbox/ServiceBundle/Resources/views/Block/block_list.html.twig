@@ -1,0 +1,29 @@
+{#
+/**
+ * This file is part of the Presta CMS Sandbox project.
+ *
+ * (c) PrestaConcept <http://www.prestaconcept.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+#}
+{% extends 'PrestaCMSCoreBundle:Block:base_block.html.twig' %}
+
+{% block block %}
+    {% set page = cmf_find('/website/sandbox/page/services/detail') %}
+
+    {% for service in services %}
+        <div class="detail service">
+            <h3>{{ service.title }}</h3>
+            <div class="row">
+                <div class="span3">{% media service.image, 'page_sidebar' %}</div>
+                <div class="span6">
+                    {{ service.description | striptags | slice(0,200) }}...
+                    <a href="{{ path(page, {'url': service.url}) }}">{{ 'service.list.detail.link.label' | trans() }}</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
