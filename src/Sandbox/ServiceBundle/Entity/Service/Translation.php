@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the Presta Bundle project.
+ * This file is part of the Presta CMS Sandbox project.
  *
- * (c) Nicolas Bastien <nbastien@prestaconcept.net>
+ * (c) PrestaConcept <http://www.prestaconcept.net>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,7 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 
 /**
  * @author     David Epely <depely@prestaconcept.net>
- * 
+ *
  * @ORM\Entity
  * @ORM\Table(name="sandbox_service_translation",
  *     uniqueConstraints={@ORM\UniqueConstraint(name="lookup_unique_idx", columns={

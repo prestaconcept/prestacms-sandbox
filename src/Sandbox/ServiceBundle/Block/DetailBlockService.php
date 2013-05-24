@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the Presta Bundle project.
+ * This file is part of the Presta CMS Sandbox project.
  *
- * (c) Nicolas Bastien <nbastien@prestaconcept.net>
+ * (c) PrestaConcept <http://www.prestaconcept.net>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.

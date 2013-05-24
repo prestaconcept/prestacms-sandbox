@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the Presta Bundle project.
+ * This file is part of the Presta CMS Sandbox project.
  *
- * (c) Nicolas Bastien <nbastien@prestaconcept.net>
+ * (c) PrestaConcept <http://www.prestaconcept.net>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -122,18 +122,24 @@ class Service implements Translatable
         return $this->enabled;
     }
 
+    /**
+     * @param int $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @param \Presta\DefaultBundle\Reference\Media $image
+     * @param Application\Sonata\MediaBundle\Entity\Media $image
      */
     public function setImage($image)
     {
@@ -141,7 +147,7 @@ class Service implements Translatable
     }
 
     /**
-     * @return \Presta\DefaultBundle\Reference\Media
+     * @return Application\Sonata\MediaBundle\Entity\Media
      */
     public function getImage()
     {

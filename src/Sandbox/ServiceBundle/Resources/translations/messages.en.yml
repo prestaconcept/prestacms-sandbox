@@ -1,3 +1,9 @@
 service:
     list:
         detail.link.label: Details
+    detail:
+        notfound:
+            title: Service not found
+            body: |
+              This page can contain a dynamic service and can be managed by a standard sonata CRUD.
+              Please list thoses services from the breadcrumb.

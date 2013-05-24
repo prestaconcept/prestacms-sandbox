@@ -1,3 +1,13 @@
+{#
+/**
+ * This file is part of the Presta CMS Sandbox project.
+ *
+ * (c) PrestaConcept <http://www.prestaconcept.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+#}
 {% extends 'PrestaCMSCoreBundle:Block:base_block.html.twig' %}
 
 {% block block %}
@@ -11,11 +21,10 @@
         {{ service.description | raw }}
     </div>
     {% else %}
-    <h1>Service not found</h1>
+    <h1>{{ 'service.detail.notfound.title' | trans }}</h1>
 
     <div class="service well well-large">
-        This page can contain a dynamic service and can be managed by a standard sonata CRUD.
-        Please list thoses services from the breadcrumb.
+        {{ 'service.detail.notfound.body' | trans }}
     </div>
     {% endif %}
 {% endblock %}
