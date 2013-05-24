@@ -1,0 +1,26 @@
+parameters:
+
+services:
+    #admin
+    sandbox.admin.service:
+        class: Sandbox\ServiceBundle\Admin\ServiceAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sandbox, label: Services }
+        arguments: [null, Sandbox\ServiceBundle\Entity\Service, SonataAdminBundle:CRUD]
+
+    #blocks
+    sandbox.block.service.list:
+        class: Sandbox\ServiceBundle\Block\ListBlockService
+        tags: [ { name: "sonata.block" } ]
+        arguments: [sandbox_block_service_list, @templating]
+        calls:
+            - [ setTranslator, [@translator] ]
+            - [ setContainer, [@service_container]]
+
+    sandbox.block.service.detail:
+        class: Sandbox\ServiceBundle\Block\DetailBlockService
+        tags: [ { name: "sonata.block" } ]
+        arguments: [sandbox_block_service_list, @templating]
+        calls:
+            - [ setTranslator, [@translator] ]
+            - [ setContainer, [@service_container]]

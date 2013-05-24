@@ -10,6 +10,7 @@
 namespace Application\Presta\CMSCoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Gaufrette\Filesystem;
 use Gaufrette\Adapter\Local as LocalAdapter;
@@ -20,7 +21,7 @@ use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 /**
  * Media fixtures
  */
-class LoadMedia implements FixtureInterface
+class LoadMedia extends AbstractFixture implements FixtureInterface
 {
     /**
      * Création des pages de contenu
@@ -39,7 +40,7 @@ class LoadMedia implements FixtureInterface
 
         $path = __DIR__ . '/../data/media/';
         //Media Creation
-        foreach ($medias as $file) {
+        foreach ($medias as $k => $file) {
             $media = new Media();
             $media->setBinaryContent($path . $file);
             $media->setEnabled(true);
@@ -47,6 +48,8 @@ class LoadMedia implements FixtureInterface
             $media->setProviderName('sonata.media.provider.image');
 
             $manager->persist($media);
+            
+            $this->addReference('media-' . $k, $media);
 
             $galleryName = substr($file, 0, strpos($file, '/'));
             if (!isset($galleryMedia[$galleryName])) {
@@ -76,5 +79,10 @@ class LoadMedia implements FixtureInterface
 
             $manager->flush();
         }
+    }
+    
+    public function getOrder()
+    {
+        return 1;
     }
 }

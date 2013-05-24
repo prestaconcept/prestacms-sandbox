@@ -1,0 +1,3 @@
+service:
+    list:
+        detail.link.label: Details
