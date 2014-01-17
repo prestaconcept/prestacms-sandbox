@@ -37,6 +37,7 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.1",
 
+        "sonata-project/core-bundle" : "~2.2@dev",
         "sonata-project/admin-bundle":"2.2.*@dev",
         "sonata-project/media-bundle":"2.2.*@dev",
         "sonata-project/doctrine-orm-admin-bundle":"2.2.*@dev",
