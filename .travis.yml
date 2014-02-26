@@ -12,8 +12,8 @@ before_script:
   - php composer.phar install -n
   - php composer.phar dump-autoload --optimize
   - make install
-  #- export NODE_PATH="$(pwd)/node_modules"
-  #- npm install zombie@1.4.1
+  - export NODE_PATH="$(pwd)/node_modules"
+  - npm install zombie@1.4.1
   - vendor/bin/behat --profile travis
 
 script:
