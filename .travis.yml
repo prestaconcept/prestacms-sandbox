@@ -14,7 +14,7 @@ before_script:
   - make install
   #- export NODE_PATH="$(pwd)/node_modules"
   #- npm install zombie@1.4.1
-  - vendor/bin/behat
+  - vendor/bin/behat --profile travis
 
 script:
   - phpcs --extensions=php -n --standard=PSR2 --report=full src

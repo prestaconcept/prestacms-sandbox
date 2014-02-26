@@ -12,6 +12,11 @@ default:
             javascript_session: zombie
             show_cmd: firefox %s
 
+travis:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://localhost:8000/
+
 jenkins:
     extensions:
         Behat\MinkExtension\Extension:
