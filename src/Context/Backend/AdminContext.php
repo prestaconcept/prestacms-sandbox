@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Context;
+namespace Context\Backend;
 
 use Behat\MinkExtension\Context\MinkContext;
 
@@ -97,5 +97,16 @@ class AdminContext extends MinkContext
         }
 
         $element->click();
+    }
+
+    /**
+     * @Then /^I waiting ajax request$/
+     */
+    public function iWaitingAjaxRequest()
+    {
+        $js = <<<JS
+                0 === jQuery.active && 0 === jQuery(':animated').length
+JS;
+        $this->getMainContext()->getSession()->wait(20000, $js);
     }
 }

@@ -11,6 +11,7 @@ namespace Context;
 
 use Symfony\Component\HttpKernel\KernelInterface;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
+use Context\Backend\AdminContext;
 
 /**
  * @author Nicolas Bastien <nbastien@prestaconcept.net>
@@ -29,9 +30,9 @@ class FeatureContext extends AdminContext implements KernelAwareInterface
     {
         $this->parameters = $parameters;
 
-        $this->useContext('theme', new AdminThemeContext);
-        $this->useContext('website', new AdminWebsiteContext());
-        $this->useContext('page', new AdminPageContext);
+        $this->useContext('theme', new Backend\AdminThemeContext);
+        $this->useContext('website', new Backend\AdminWebsiteContext());
+        $this->useContext('page', new Backend\AdminPageContext);
     }
 
     /**

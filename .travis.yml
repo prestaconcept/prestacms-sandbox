@@ -5,20 +5,29 @@ php:
   - 5.5
 
 before_script:
+  - sudo apt-get update > /dev/null
+  - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-sqlite php5-gd php5-curl php5-intl
+
+  - sudo sed -i -e "s,/var/www,$(pwd)/web,g" /etc/apache2/sites-available/default
+  - sudo sed -i -e "/DocumentRoot/i\ServerName dev-prestacms-sandbox.com" /etc/apache2/sites-available/default
+  - echo "127.0.0.1 dev-prestacms-sandbox.com" | sudo tee -a /etc/hosts
+  - sudo /etc/init.d/apache2 restart
+
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   - cp app/config/parameters.yml.dist app/config/parameters.yml
-  - wget http://getcomposer.org/composer.phar
-  - php composer.phar install -n
-  - php composer.phar dump-autoload --optimize
+  - composer self-update
+  - composer install -n
+  - composer dump-autoload --optimize
   - make install
-  #- export NODE_PATH="$(pwd)/node_modules"
-  #- npm install zombie@1.4.1
-  - vendor/bin/behat
+  - app/console cache:clear
+
+  - export NODE_PATH="$(pwd)/node_modules"
+  - npm install zombie@2.0.0-alpha24
+  - vendor/bin/behat --profile travis
 
 script:
   - phpcs --extensions=php -n --standard=PSR2 --report=full src
-
 
 notifications:
   email: "nbastien@prestaconcept.net"
